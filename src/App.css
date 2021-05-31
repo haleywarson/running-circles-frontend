@@ -3,9 +3,15 @@
 burgundy = #79262d
 black */
 
-#app-bar {
+#app-bar,
+#top-nav {
   background-color: white;
   color: #79262d;
+}
+
+#nav-bar-title {
+  font-family: "Teko", sans-serif;
+  font-size: 2rem;
 }
 
 .main {
@@ -14,4 +20,5 @@ black */
   background-size: cover;
   height: 100vh;
   background-position: center;
+  font-family: "Open Sans", sans-serif;
 }

@@ -52,8 +52,8 @@ export default function MenuAppBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            Running in Circles
+          <Typography variant="h6" className={classes.title} id="nav-bar-title">
+            RUNNING CIRCLES
           </Typography>
           {auth && (
             <div>
