@@ -51,6 +51,7 @@ function App() {
   // }, []);
 
   const removeRun = (runToRemove) => {
+    console.log("removing run...");
     let filteredRuns = runs.filter((run) => {
       return run !== runToRemove;
     });
