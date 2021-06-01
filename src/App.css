@@ -21,7 +21,47 @@ black */
   background-size: cover;
   height: 100vh;
   background-position: center;
+  /* opacity: 0.9; */
   font-family: "Open Sans", sans-serif;
+}
+
+h1,
+h2 {
+  padding-left: 0.5em;
+  padding-top: 0.5em;
+  font-family: "Teko", sans-serif;
+  font-size: 2rem;
+  color: #79262d;
+}
+
+.add-run-form {
+  padding: 0.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5em;
+  background-color: white;
+  width: 90%;
+  border-radius: 13px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.form-field {
+  padding: 1em;
+  margin: 0.5em;
+}
+
+#submit-run-btn {
+  font-size: 1.3rem;
+  font-family: "Teko", sans-serif;
+  color: white;
+  background: black;
+  padding: 8px;
+  border-radius: 13px;
+  text-decoration: none;
+  vertical-align: middle;
+  margin: 0.5em;
 }
 
 /* || Footer */

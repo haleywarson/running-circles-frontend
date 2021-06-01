@@ -58,7 +58,7 @@ export default function AddRunForm() {
         value={formState.runDate}
         onChange={handleChange}
       />
-      <input type="submit" value="Add run" />
+      <input id="submit-run-btn" type="submit" value="Add run" />
     </form>
   );
 }
