@@ -1,44 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 
-const runUrl = "http://localhost:3000/runs";
-
-export default function AddRunForm() {
-  const [formState, setFormState] = useState({
-    runName: "",
-    runLocation: "",
-    runDate: "",
-  });
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    fetch(runUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formState),
-    });
-    //   .then((res) => res.json())
-    //   .then((res) =>
-  };
-
-  const handleChange = ({ target }) => {
-    setFormState({
-      ...formState,
-      [target.name]: target.value,
-    });
-  };
-
+export default function AddRunForm(props) {
   return (
-    <form className="add-run-form" onSubmit={handleSubmit}>
+    <form className="add-run-form" onSubmit={props.handleSubmit}>
       <label htmlFor="runName">Name your run</label>
       <input
         className="form-field"
         type="text"
         name="runName"
         id="runName"
-        value={formState.runName}
-        onChange={handleChange}
+        value={props.formState.runName}
+        onChange={props.handleChange}
       />
       <label htmlFor="runLocation">Location</label>
       <input
@@ -46,8 +18,8 @@ export default function AddRunForm() {
         type="text"
         name="runLocation"
         id="runLocation"
-        value={formState.runLocation}
-        onChange={handleChange}
+        value={props.formState.runLocation}
+        onChange={props.handleChange}
       />
       <label htmlFor="runDate">Date</label>
       <input
@@ -55,8 +27,8 @@ export default function AddRunForm() {
         type="date"
         name="runDate"
         id="runDate"
-        value={formState.runDate}
-        onChange={handleChange}
+        value={props.formState.runDate}
+        onChange={props.handleChange}
       />
       <input id="submit-run-btn" type="submit" value="Add run" />
     </form>
