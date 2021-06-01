@@ -3,19 +3,25 @@ import React from "react";
 export default function AddRunForm(props) {
   return (
     <form className="add-run-form" onSubmit={props.handleSubmit}>
-      <label htmlFor="runName">Name your run</label>
+      <label htmlFor="runName" hidden="true">
+        Name your run
+      </label>
       <input
         className="form-field"
         type="text"
         name="runName"
+        placeholder="Name your run"
         id="runName"
         value={props.formState.runName}
         onChange={props.handleChange}
       />
-      <label htmlFor="runLocation">Location</label>
+      <label htmlFor="runLocation" hidden="true">
+        Location
+      </label>
       <input
         className="form-field"
         type="text"
+        placeholder="Location"
         name="runLocation"
         id="runLocation"
         value={props.formState.runLocation}
