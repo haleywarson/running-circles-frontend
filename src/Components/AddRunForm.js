@@ -30,6 +30,15 @@ export default function AddRunForm(props) {
         value={props.formState.runDate}
         onChange={props.handleChange}
       />
+      <label htmlFor="runTime">Time</label>
+      <input
+        className="form-field"
+        type="time"
+        name="runTime"
+        id="runTime"
+        value={props.formState.runTime}
+        onChange={props.handleChange}
+      />
       <input id="submit-run-btn" type="submit" value="Add run" />
     </form>
   );

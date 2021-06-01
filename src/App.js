@@ -5,30 +5,32 @@ import AddRunForm from "./Components/AddRunForm";
 import ActivityFeed from "./Components/ActivityFeed";
 
 import "./App.css";
-import { RemoveCircleOutlineSharp } from "@material-ui/icons";
 
-const runUrl = "http://localhost:3000/runs";
+// const runsUrl = "http://localhost:3000/runs";
 
 function App() {
   const [formState, setFormState] = useState({
     runName: "",
     runLocation: "",
     runDate: "",
+    runTime: "",
   });
 
   const [runs, setRuns] = useState([]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch(runUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formState),
-    })
-      .then((res) => res.json())
-      .then((runs) => setRuns(runs));
+    console.log("adding run...");
+    setRuns([...runs, formState]);
+    // fetch(runUrl, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(formState),
+    // })
+    //   .then((res) => res.json())
+    //   .then((runs) => setRuns(runs));
   };
 
   const handleChange = ({ target }) => {
@@ -38,17 +40,22 @@ function App() {
     });
   };
 
-  const fetchRuns = () => {
-    fetch(runsUrl)
-      .then((res) => res.json())
-      .then((runs) => setRuns(runs));
+  // const fetchRuns = () => {
+  //   fetch(runsUrl)
+  //     .then((res) => res.json())
+  //     .then((runs) => setRuns(runs));
+  // };
+
+  // useEffect(() => {
+  //   fetchRuns();
+  // }, []);
+
+  const removeRun = (runToRemove) => {
+    let filteredRuns = runs.filter((run) => {
+      return run !== runToRemove;
+    });
+    setRuns(filteredRuns);
   };
-
-  useEffect(() => {
-    fetchRuns();
-  }, []);
-
-  const removeRun = () => {};
 
   return (
     <div className="App">

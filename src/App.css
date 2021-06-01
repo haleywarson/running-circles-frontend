@@ -22,6 +22,9 @@ black */
   height: 100vh;
   background-position: center;
   font-family: "Open Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 h1,
@@ -40,10 +43,11 @@ h2 {
   justify-content: space-between;
   align-items: center;
   margin: 0.5em;
-  background-color: white;
   width: 90%;
   border-radius: 13px;
   font-family: "Open Sans", sans-serif;
+  background-color: #79262d;
+  color: white;
 }
 
 .form-field {
@@ -61,6 +65,11 @@ h2 {
   text-decoration: none;
   vertical-align: middle;
   margin: 0.5em;
+}
+
+.run-card {
+  background-color: #79262d;
+  color: white;
 }
 
 /* || Footer */
