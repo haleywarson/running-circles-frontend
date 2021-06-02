@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 import AddRunForm from "./AddRunForm";
-import ActivityFeed from "./ActivityFeed";
+import JoinARun from "./JoinARun";
+
+// const runsUrl = "http://localhost:3000/runs";
 
 export default function Main() {
   const [formState, setFormState] = useState({
@@ -54,15 +56,15 @@ export default function Main() {
   };
 
   return (
-    <div className="main">
+    <div className="plan-a-run">
       <h2>Add a run</h2>
       <AddRunForm
         formState={formState}
         handleSubmit={handleSubmit}
         handleChange={handleChange}
       />
-      <h2>Activity feed</h2>
-      <ActivityFeed runs={runs} removeRun={removeRun} />
+      <h2>Join a run</h2>
+      <JoinARun runs={runs} removeRun={removeRun} />
     </div>
   );
 }
