@@ -96,8 +96,12 @@ export default function RunPage({ validateUser }) {
         removeRun={removeRun}
         addToMyRuns={addToMyRuns}
       />
-      <h2>Your training plan</h2>
-      <MyRunsContainer myRuns={myRuns} removeMyRun={removeMyRun} />
+      {myRuns.length !== 0 ? (
+        <>
+          <h2>Your training plan</h2>
+          <MyRunsContainer myRuns={myRuns} removeMyRun={removeMyRun} />
+        </>
+      ) : null}
     </div>
   );
 }

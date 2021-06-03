@@ -47,12 +47,15 @@ export default function RunPage({ validateUser }) {
     <div className="circle-page">
       <h2>Running circles</h2>
       <CirclesContainer circles={circles} joinCircle={joinCircle} />
-      <h2>My circles</h2>
-
-      <MyCirclesContainer
-        myCircles={myCircles}
-        removeMyCircle={removeMyCircle}
-      />
+      {myCircles.length !== 0 ? (
+        <>
+          <h2>My circles</h2>
+          <MyCirclesContainer
+            myCircles={myCircles}
+            removeMyCircle={removeMyCircle}
+          />
+        </>
+      ) : null}
     </div>
   );
 }
