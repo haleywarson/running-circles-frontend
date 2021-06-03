@@ -86,6 +86,12 @@ a {
   margin: 0.5em;
 }
 
+.login-form h2,
+.signup-form h2 {
+  color: white;
+  padding: 0;
+}
+
 .main-container {
   padding: 1em;
   display: flex;
@@ -98,10 +104,10 @@ a {
   background-image: url("https://images.unsplash.com/photo-1502904550040-7534597429ae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2498&q=80");
 }
 
-.login-form h2,
-.signup-form h2 {
+.main-container p {
+  font-family: "Teko", sans-serif;
   color: white;
-  padding: 0;
+  font-size: 4rem;
 }
 
 /* Welcome */
@@ -257,7 +263,7 @@ footer {
 }
 
 footer p {
-  color: #79262d;
+  color: #cc6f64;
   font-size: 0.9rem;
   font-family: "Teko", sans-serif;
 }
