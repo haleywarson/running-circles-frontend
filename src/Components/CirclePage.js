@@ -48,6 +48,7 @@ export default function RunPage({
           <MyCirclesContainer
             myCircles={myCircles}
             removeMyCircle={removeMyCircle}
+            circles={circles}
           />
         </>
       ) : null}
