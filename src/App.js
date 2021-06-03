@@ -35,6 +35,7 @@ export default function App() {
     fetch(baseUrl + "login", {
       method: "POST",
       headers: {
+        Accept: "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -57,6 +58,11 @@ export default function App() {
           });
         }
       });
+  };
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    setUser({});
   };
 
   // useEffect(() => {
@@ -99,8 +105,8 @@ export default function App() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/" className="nav-link">
-                  Home
+                <Link to="/" className="nav-link" onClick={logout}>
+                  Logout
                 </Link>
               </li>
             </ul>
@@ -113,7 +119,7 @@ export default function App() {
               <PlanARun />
             </Route>
             <Route path="/">
-              <div>
+              <div className="signup-login-container">
                 {user.username ? (
                   <h2>Welcome! {user.username}</h2>
                 ) : (
