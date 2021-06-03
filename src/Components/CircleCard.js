@@ -1,10 +1,9 @@
 import React from "react";
 
-export default function CircleCard({ circle, joinCircle, circles }) {
-  const displayCircleUsers = () =>
-    circle.users.map((user) => {
-      <li>{user.username}</li>;
-    });
+export default function CircleCard({ circle, joinCircle }) {
+  const displayCircleUsers = () => {
+    return circle.users.map((user) => <li>{user.username}</li>);
+  };
 
   return (
     <div className="circle-card">
