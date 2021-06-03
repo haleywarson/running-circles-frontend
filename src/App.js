@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import PlanARun from "./Components/PlanARun";
+import RunPage from "./Components/RunPage";
 import SignUpForm from "./Components/SignUpForm";
 import LogInForm from "./Components/LogInForm";
 
@@ -49,13 +49,9 @@ export default function App() {
       .then((result) => {
         if (result.token) {
           localStorage.setItem("token", result.token);
-          this.setState({
-            user: result.user,
-          });
+          setUser(result.user);
         } else {
-          this.setState({
-            error: result.error,
-          });
+          setError(result.error);
         }
       });
   };
@@ -65,30 +61,27 @@ export default function App() {
     setUser({});
   };
 
-  // useEffect(() => {
-  //   validateUser();
-  // });
+  const validateUser = () => {
+    let token = localStorage.getItem("token");
+    if (token) {
+      fetch(baseUrl + "profile", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((result) => {
+          if (result.id) {
+            setUser(result);
+          }
+        });
+    }
+  };
 
-  // const validateUser = () => {
-  //   let token = localStorage.getItem("token");
-  //   if (token) {
-  //     fetch(baseUrl + "profile", {
-  //       method: "GET",
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     })
-  //       .then((response) => response.json())
-  //       .then(
-  //         //   (result) => {
-  //         //   if (result.id) {
-  //         //     user: result;
-  //         //   }
-  //         // }
-  //         console.log
-  //       );
-  //   }
-  // };
+  useEffect(() => {
+    validateUser();
+  }, []);
 
   return (
     <div className="App">
@@ -116,7 +109,7 @@ export default function App() {
         <main>
           <Switch>
             <Route path="/run">
-              <PlanARun />
+              <RunPage validateUser={validateUser} />
             </Route>
             <Route path="/">
               <div className="signup-login-container">

@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 
 import AddRunForm from "./AddRunForm";
-import ActivityFeed from "./ActivityFeed";
+import RunsContainer from "./RunsContainer";
+import CirclesContainer from "./CirclesContainer";
 
 const baseUrl = "http://localhost:3000/";
-const runsUrl = "http://localhost:3000/runs";
 
-export default function Main() {
+export default function RunPage({ validateUser }) {
+  //   STATE AND FETCH
+
   const [formState, setFormState] = useState({
     runName: "",
     runLocation: "",
@@ -15,12 +17,44 @@ export default function Main() {
   });
 
   const [runs, setRuns] = useState([]);
+  const [circles, setCircles] = useState([]);
+  const [myRuns, setMyRuns] = useState([]);
+
+  const fetchRuns = () => {
+    fetch(baseUrl + "runs", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((runs) => setRuns(runs));
+  };
+
+  const fetchCircles = () => {
+    fetch(baseUrl + "circles", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((circles) => setCircles(circles));
+  };
+
+  useEffect(() => {
+    validateUser();
+    fetchRuns();
+    fetchCircles();
+  }, []);
+
+  //   EVENT HANDLERS
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("adding run...");
     setRuns([...runs, formState]);
-    fetch(runsUrl, {
+    fetch(baseUrl + "runs", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -31,7 +65,7 @@ export default function Main() {
       },
       body: JSON.stringify(formState),
     })
-      .then((res) => res.json())
+      .then((response) => response.json())
       .then((runs) => setRuns(runs));
   };
 
@@ -42,16 +76,6 @@ export default function Main() {
     });
   };
 
-  const fetchRuns = () => {
-    fetch(runsUrl)
-      .then((res) => res.json())
-      .then((runs) => setRuns(runs));
-  };
-
-  useEffect(() => {
-    fetchRuns();
-  }, []);
-
   const removeRun = (runToRemove) => {
     console.log("removing run...");
     let filteredRuns = runs.filter((run) => {
@@ -60,8 +84,12 @@ export default function Main() {
     setRuns(filteredRuns);
   };
 
+  const addToMyRuns = (runToAdd) => {
+    setMyRuns([...myRuns, runToAdd]);
+  };
+
   return (
-    <div className="plan-a-run">
+    <div className="run-page">
       <h2>Add a run</h2>
       <AddRunForm
         formState={formState}
@@ -69,7 +97,14 @@ export default function Main() {
         handleChange={handleChange}
       />
       <h2>Join a run</h2>
-      <ActivityFeed runs={runs} removeRun={removeRun} />
+      <RunsContainer
+        runs={runs}
+        removeRun={removeRun}
+        addToMyRuns={addToMyRuns}
+      />
+      <h2>Running circles</h2>
+      <CirclesContainer circles={circles} />
+      <h2>Your training plan</h2>
     </div>
   );
 }

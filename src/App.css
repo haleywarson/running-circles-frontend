@@ -56,44 +56,14 @@ a {
   opacity: 0.7;
 }
 
-/* #app-bar,
-#top-nav {
-  background-color: white;
-  color: #79262d;
-}
+/* || Login/Signup */
 
-#nav-bar-title,
-#toolbar {
-  font-family: "Teko", sans-serif;
-  font-size: 2rem;
-} */
-
-.main {
-  background-image: url("https://images.unsplash.com/photo-1502904550040-7534597429ae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1249&q=80");
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
-  background-position: center;
-  font-family: "Open Sans", sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-h1,
-h2 {
-  font-family: "Teko", sans-serif;
-  font-size: 2rem;
-  color: #79262d;
-}
-
-.add-run-form,
 .login-form,
 .signup-form {
   padding: 0.5em;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin: 0.5em;
   width: 90%;
@@ -101,6 +71,19 @@ h2 {
   font-family: "Open Sans", sans-serif;
   background-color: #79262d;
   color: white;
+}
+
+.login-form input[type="submit"],
+.signup-form input[type="submit"] {
+  font-size: 1.3rem;
+  font-family: "Teko", sans-serif;
+  color: white;
+  background: black;
+  padding: 8px;
+  border-radius: 13px;
+  text-decoration: none;
+  vertical-align: middle;
+  margin: 0.5em;
 }
 
 .signup-login-container {
@@ -115,6 +98,48 @@ h2 {
 .signup-form h2 {
   color: white;
   padding: 0;
+}
+
+/* || Run/Main */
+
+.main {
+  background-image: url("https://images.unsplash.com/photo-1502904550040-7534597429ae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1249&q=80");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  background-position: center;
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.run-page h2 {
+  font-family: "Teko", sans-serif;
+  font-size: 2rem;
+  color: #79262d;
+  padding: 0.5em;
+}
+
+h1,
+h2 {
+  font-family: "Teko", sans-serif;
+  font-size: 2rem;
+  color: #79262d;
+}
+
+.add-run-form {
+  padding: 0.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: 90%;
+  border-radius: 13px;
+  font-family: "Open Sans", sans-serif;
+  background-color: #79262d;
+  color: white;
 }
 
 .form-field {
@@ -144,6 +169,14 @@ h2 {
   border-radius: 13px;
   font-family: "Open Sans", sans-serif;
   background-color: #79262d;
+  color: white;
+}
+
+.run-card h3 {
+  color: white;
+}
+
+.run-card p {
   color: white;
 }
 
