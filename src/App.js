@@ -124,11 +124,13 @@ export default function App() {
                   Stats
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/" className="nav-link" onClick={logout}>
-                  Logout
-                </Link>
-              </li>
+              {user.username ? (
+                <li className="nav-item">
+                  <Link to="/" className="nav-link" onClick={logout}>
+                    Logout
+                  </Link>
+                </li>
+              ) : null}
             </ul>
           </nav>
         </header>
