@@ -7,8 +7,8 @@ export default function RunCard({ run, removeRun, addToMyRuns }) {
       <p>{run.location}</p>
       <p>{run.date}</p>
       <p>{run.time}</p>
-      <button onClick={() => removeRun(run)}>Delete</button>
-      <button onClick={() => addToMyRuns(run)}>Join run</button>
+      <button onClick={() => removeRun(run)}>X</button>
+      <button onClick={() => addToMyRuns(run)}>Join</button>
     </div>
   );
 }

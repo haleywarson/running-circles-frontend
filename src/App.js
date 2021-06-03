@@ -123,13 +123,13 @@ export default function App() {
             </Route>
             <Route path="/">
               <div className="main-container">
-                <p>running is fun with your circle of friends...</p>
                 {user.username ? (
                   <>
                     <WelcomePage user={user} />
                   </>
                 ) : (
                   <>
+                    <p>running is fun with your circle of friends...</p>
                     <SignUpForm signUp={signUp} />
                     <LogInForm login={login} error={error} />
                   </>

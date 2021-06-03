@@ -44,11 +44,16 @@ export default function RunPage({ validateUser }) {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        Authorization:
-          "Bearer" +
-          "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5fQ.AlVHL6kmrZOUDIOyYK-ZUXh5R9Jq_Jo5rk2G9IOJ2Uo",
+        Authorization: `Bearer ${localStorage.token}`,
       },
-      body: JSON.stringify(formState),
+      body: JSON.stringify({
+        run: {
+          name: formState.runName,
+          location: formState.runLocation,
+          date: formState.runDate,
+          time: formState.runTime,
+        },
+      }),
     })
       .then((response) => response.json())
       .then((runs) => setRuns(runs));
@@ -90,12 +95,16 @@ export default function RunPage({ validateUser }) {
         handleSubmit={handleSubmit}
         handleChange={handleChange}
       />
-      <h2>Join a run</h2>
-      <RunsContainer
-        runs={runs}
-        removeRun={removeRun}
-        addToMyRuns={addToMyRuns}
-      />
+      {runs.length !== 0 ? (
+        <>
+          <h2>Join a run</h2>
+          <RunsContainer
+            runs={runs}
+            removeRun={removeRun}
+            addToMyRuns={addToMyRuns}
+          />
+        </>
+      ) : null}
       {myRuns.length !== 0 ? (
         <>
           <h2>Your training plan</h2>
