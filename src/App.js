@@ -1,45 +1,104 @@
-import react from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import MenuAppBar from "./Components/MenuAppBar";
 import PlanARun from "./Components/PlanARun";
-import JoinARun from "./Components/JoinARun";
-import Circles from "./Components/Circles";
-import TrainingPlan from "./Components/TrainingPlan";
-import Home from "./Components/Home";
-import Footer from "./Components/Footer";
+import SignUpForm from "./Components/SignUpForm";
+import LogInForm from "./Components/LogInForm";
 
 import "./App.css";
 
+const baseUrl = "http://localhost:3000/";
+
 export default function App() {
+  const [user, setUser] = useState({});
+  const [error, setError] = useState("");
+
+  const signUp = (user) => {
+    fetch(baseUrl + "users", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user: {
+          username: user.username,
+          password: user.password,
+        },
+      }),
+    })
+      .then((response) => response.json())
+      .then((user) => setUser({ user }));
+  };
+
+  const login = (username, password) => {
+    fetch(baseUrl + "login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user: {
+          username,
+          password,
+        },
+      }),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        if (result.token) {
+          localStorage.setItem("token", result.token);
+          this.setState({
+            user: result.user,
+          });
+        } else {
+          this.setState({
+            error: result.error,
+          });
+        }
+      });
+  };
+
+  // useEffect(() => {
+  //   validateUser();
+  // });
+
+  // const validateUser = () => {
+  //   let token = localStorage.getItem("token");
+  //   if (token) {
+  //     fetch(baseUrl + "profile", {
+  //       method: "GET",
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     })
+  //       .then((response) => response.json())
+  //       .then(
+  //         //   (result) => {
+  //         //   if (result.id) {
+  //         //     user: result;
+  //         //   }
+  //         // }
+  //         console.log
+  //       );
+  //   }
+  // };
+
   return (
     <div className="App">
       <Router>
         <header>
-          <MenuAppBar />
-          <nav>
-            <ul>
-              <li>
-                <Link to="/joinarun" className="nav-link">
-                  Join a run
+          <Link to="/" className="nav-link">
+            <h1 id="logo">RUNNING CIRCLES</h1>
+          </Link>
+          <nav className="nav-menu-active">
+            <ul className="nav-list">
+              <li className="nav-item">
+                <Link to="/run" className="nav-link">
+                  Run
                 </Link>
               </li>
-              <li>
-                <Link to="/planarun" className="nav-link">
-                  Plan a run
-                </Link>
-              </li>
-              <li>
-                <Link to="/circles" className="nav-link">
-                  Your circles
-                </Link>
-              </li>
-              <li>
-                <Link to="/trainingplan" className="nav-link">
-                  Your training plan
-                </Link>
-              </li>
-              <li>
+              <li className="nav-item">
                 <Link to="/" className="nav-link">
                   Home
                 </Link>
@@ -50,25 +109,27 @@ export default function App() {
 
         <main>
           <Switch>
-            <Route path="/planarun">
+            <Route path="/run">
               <PlanARun />
             </Route>
-            <Route path="/joinarun">
-              <JoinARun />
-            </Route>
-            <Route path="/circles">
-              <Circles />
-            </Route>
-            <Route path="/trainingplan">
-              <TrainingPlan />
-            </Route>
             <Route path="/">
-              <Home />
+              <div>
+                {user.username ? (
+                  <h2>Welcome! {user.username}</h2>
+                ) : (
+                  <>
+                    <SignUpForm signUp={signUp} />
+                    <LogInForm login={login} error={error} />
+                  </>
+                )}
+              </div>
             </Route>
           </Switch>
         </main>
+        <footer className="footer">
+          <p>Copyright 2021 Running Circles. All rights reserved.</p>
+        </footer>
       </Router>
-      <Footer />
     </div>
   );
 }

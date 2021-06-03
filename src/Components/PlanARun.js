@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 
 import AddRunForm from "./AddRunForm";
-import JoinARun from "./JoinARun";
+import ActivityFeed from "./ActivityFeed";
 
-// const runsUrl = "http://localhost:3000/runs";
+const baseUrl = "http://localhost:3000/";
+const runsUrl = "http://localhost:3000/runs";
 
 export default function Main() {
   const [formState, setFormState] = useState({
@@ -19,15 +20,19 @@ export default function Main() {
     event.preventDefault();
     console.log("adding run...");
     setRuns([...runs, formState]);
-    // fetch(runUrl, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(formState),
-    // })
-    //   .then((res) => res.json())
-    //   .then((runs) => setRuns(runs));
+    fetch(runsUrl, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization:
+          "Bearer" +
+          "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5fQ.AlVHL6kmrZOUDIOyYK-ZUXh5R9Jq_Jo5rk2G9IOJ2Uo",
+      },
+      body: JSON.stringify(formState),
+    })
+      .then((res) => res.json())
+      .then((runs) => setRuns(runs));
   };
 
   const handleChange = ({ target }) => {
@@ -37,15 +42,15 @@ export default function Main() {
     });
   };
 
-  // const fetchRuns = () => {
-  //   fetch(runsUrl)
-  //     .then((res) => res.json())
-  //     .then((runs) => setRuns(runs));
-  // };
+  const fetchRuns = () => {
+    fetch(runsUrl)
+      .then((res) => res.json())
+      .then((runs) => setRuns(runs));
+  };
 
-  // useEffect(() => {
-  //   fetchRuns();
-  // }, []);
+  useEffect(() => {
+    fetchRuns();
+  }, []);
 
   const removeRun = (runToRemove) => {
     console.log("removing run...");
@@ -64,7 +69,7 @@ export default function Main() {
         handleChange={handleChange}
       />
       <h2>Join a run</h2>
-      <JoinARun runs={runs} removeRun={removeRun} />
+      <ActivityFeed runs={runs} removeRun={removeRun} />
     </div>
   );
 }

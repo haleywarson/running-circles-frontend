@@ -4,9 +4,7 @@ import RunCard from "./RunCard";
 
 export default function ActivityFeed({ runs, removeRun }) {
   const displayRuns = () => {
-    return runs.map((run, index) => (
-      <RunCard run={run} key={index} removeRun={removeRun} />
-    ));
+    return runs.map((run) => <RunCard run={run} removeRun={removeRun} />);
   };
 
   return <ul className="activity-feed">{displayRuns()}</ul>;

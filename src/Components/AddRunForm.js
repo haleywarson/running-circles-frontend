@@ -3,9 +3,7 @@ import React from "react";
 export default function AddRunForm(props) {
   return (
     <form className="add-run-form" onSubmit={props.handleSubmit}>
-      <label htmlFor="runName" hidden="true">
-        Name your run
-      </label>
+      <label htmlFor="runName">Name your run</label>
       <input
         className="form-field"
         type="text"
@@ -15,9 +13,7 @@ export default function AddRunForm(props) {
         value={props.formState.runName}
         onChange={props.handleChange}
       />
-      <label htmlFor="runLocation" hidden="true">
-        Location
-      </label>
+      <label htmlFor="runLocation">Location</label>
       <input
         className="form-field"
         type="text"
