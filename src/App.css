@@ -187,6 +187,7 @@ h2 {
   font-family: "Open Sans", sans-serif;
   background-color: #79262d;
   color: white;
+  overflow: auto;
 }
 
 .form-field {
@@ -229,9 +230,9 @@ h2 {
   color: white;
 }
 
-.run-card,
-.circle-card,
-.my-circle-card,
+.run-card p,
+.circle-card p,
+.my-circle-card p,
 .my-run-card p {
   color: white;
 }
