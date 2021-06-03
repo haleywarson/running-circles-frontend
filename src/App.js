@@ -19,6 +19,9 @@ export default function App() {
   const [runs, setRuns] = useState([]);
   const [myRuns, setMyRuns] = useState([]);
 
+  const [circles, setCircles] = useState([]);
+  const [myCircles, setMyCircles] = useState([]);
+
   const signUp = (user) => {
     fetch(baseUrl + "users", {
       method: "POST",
@@ -85,6 +88,14 @@ export default function App() {
     }
   };
 
+  const removeMyCircle = (myCircleToRemove) => {
+    console.log("removing my circle...");
+    let filteredCircles = myCircles.filter((myCircle) => {
+      return myCircle !== myCircleToRemove;
+    });
+    setMyCircles(filteredCircles);
+  };
+
   useEffect(() => {
     validateUser();
   }, []);
@@ -134,10 +145,24 @@ export default function App() {
               />
             </Route>
             <Route path="/circles">
-              <CirclePage validateUser={validateUser} />
+              <CirclePage
+                validateUser={validateUser}
+                myCircles={myCircles}
+                circles={circles}
+                setCircles={setCircles}
+                setMyCircles={setMyCircles}
+                removeMyCircle={removeMyCircle}
+              />
             </Route>
             <Route path="/stats">
-              <Stats validateUser={validateUser} user={user} myRuns={myRuns} />
+              {user.username ? (
+                <Stats
+                  validateUser={validateUser}
+                  user={user}
+                  myRuns={myRuns}
+                  myCircles={myCircles}
+                />
+              ) : null}
             </Route>
             <Route path="/">
               <div className="main-container">

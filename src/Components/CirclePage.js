@@ -5,12 +5,15 @@ import MyCirclesContainer from "./MyCirclesContainer";
 
 const baseUrl = "http://localhost:3000/";
 
-export default function RunPage({ validateUser }) {
+export default function RunPage({
+  validateUser,
+  myCircles,
+  circles,
+  setCircles,
+  setMyCircles,
+  removeMyCircle,
+}) {
   //   STATE AND FETCH
-
-  const [circles, setCircles] = useState([]);
-
-  const [myCircles, setMyCircles] = useState([]);
 
   const fetchCircles = () => {
     fetch(baseUrl + "circles", {
@@ -33,14 +36,6 @@ export default function RunPage({ validateUser }) {
   const joinCircle = (circleToJoin) => {
     console.log("adding to my circles...");
     setMyCircles([...myCircles, circleToJoin]);
-  };
-
-  const removeMyCircle = (myCircleToRemove) => {
-    console.log("removing my circle...");
-    let filteredCircles = myCircles.filter((myCircle) => {
-      return myCircle !== myCircleToRemove;
-    });
-    setMyCircles(filteredCircles);
   };
 
   return (

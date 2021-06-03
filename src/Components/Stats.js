@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import MyRunCard from "./MyRunCard";
 import MyCircleCard from "./MyCircleCard";
 
-export default function Stats({ validateUser, user, myRuns, removeMyRun }) {
+export default function Stats({
+  validateUser,
+  user,
+  myRuns,
+  removeMyRun,
+  myCircles,
+  removeMyCircle,
+}) {
   useEffect(() => {
     validateUser();
   }, []);
