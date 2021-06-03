@@ -38,7 +38,7 @@ export default function RunPage({ validateUser }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("adding run...");
-    setRuns([...runs, formState]);
+    const newRun = formState;
     fetch(baseUrl + "runs", {
       method: "POST",
       headers: {
@@ -48,15 +48,17 @@ export default function RunPage({ validateUser }) {
       },
       body: JSON.stringify({
         run: {
-          name: formState.runName,
-          location: formState.runLocation,
-          date: formState.runDate,
-          time: formState.runTime,
+          name: newRun.runName,
+          location: newRun.runLocation,
+          date: newRun.runDate,
+          time: newRun.runTime,
         },
       }),
     })
       .then((response) => response.json())
-      .then((runs) => setRuns(runs));
+      .then(
+        (newRun) => (setMyRuns([...myRuns, newRun]), setRuns([...runs, newRun]))
+      );
   };
 
   const handleChange = ({ target }) => {
