@@ -22,8 +22,7 @@ export default function RunPage({
     // circles: []
   });
 
-  // const [runs, setRuns] = useState([]);
-  // const [myRuns, setMyRuns] = useState([]);
+  const [toggleForm, setToggleForm] = useState(false);
 
   const fetchRuns = () => {
     fetch(baseUrl + "runs", {
@@ -98,12 +97,14 @@ export default function RunPage({
 
   return (
     <div className="run-page">
-      <h2>Plan a run</h2>
-      <AddRunForm
-        formState={formState}
-        handleSubmit={handleSubmit}
-        handleChange={handleChange}
-      />
+      <h2 onClick={() => setToggleForm(true)}>Plan a run +</h2>
+      {toggleForm ? (
+        <AddRunForm
+          formState={formState}
+          handleSubmit={handleSubmit}
+          handleChange={handleChange}
+        />
+      ) : null}
       {runs.length !== 0 ? (
         <>
           <h2>Join a run</h2>
