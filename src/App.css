@@ -109,6 +109,7 @@ a {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  flex-direction: column;
 }
 
 .welcome-div {
@@ -126,6 +127,11 @@ a {
   margin: 1rem;
   padding: 0.5rem;
   box-shadow: 2px 2px 3px rgba(206, 205, 205, 0.582);
+}
+
+.welcome-div a {
+  font-size: 5rem;
+  padding: 0.5em;
 }
 
 /* || Run/Main */
