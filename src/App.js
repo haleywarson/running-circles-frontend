@@ -5,6 +5,7 @@ import RunPage from "./Components/RunPage";
 import SignUpForm from "./Components/SignUpForm";
 import LogInForm from "./Components/LogInForm";
 import WelcomePage from "./Components/WelcomePage";
+import CirclePage from "./Components/CirclePage";
 
 import "./App.css";
 
@@ -99,6 +100,11 @@ export default function App() {
                 </Link>
               </li>
               <li className="nav-item">
+                <Link to="/circles" className="nav-link">
+                  Circles
+                </Link>
+              </li>
+              <li className="nav-item">
                 <Link to="/" className="nav-link" onClick={logout}>
                   Logout
                 </Link>
@@ -111,6 +117,9 @@ export default function App() {
           <Switch>
             <Route path="/run">
               <RunPage validateUser={validateUser} />
+            </Route>
+            <Route path="/circles">
+              <CirclePage validateUser={validateUser} />
             </Route>
             <Route path="/">
               <div className="main-container">

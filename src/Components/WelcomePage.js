@@ -18,7 +18,7 @@ export default function WelcomePage({ user }) {
           schedule run
         </div>
         <div className="welcome-div">
-          <a href="http://localhost:3001/run">
+          <a href="http://localhost:3001/circles">
             <i class="fas fa-circle-notch" id="circle-icon"></i>
           </a>
           my circles

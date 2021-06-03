@@ -136,7 +136,8 @@ a {
 
 /* || Run/Main */
 
-.run-page {
+.run-page,
+.circle-page {
   overflow: auto;
   height: 87vh;
 }
@@ -148,7 +149,8 @@ h2 {
   color: #79262d;
 }
 
-.run-page h2 {
+.run-page h2,
+.circle-page h2 {
   font-family: "Teko", sans-serif;
   font-size: 2rem;
   color: #79262d;
@@ -157,6 +159,7 @@ h2 {
 .add-run-form,
 .circles-container,
 .my-runs-container,
+.my-circles-container,
 .runs-container {
   padding: 0.5em;
   display: flex;
@@ -190,6 +193,7 @@ h2 {
 
 .run-card,
 .circle-card,
+.my-circle-card,
 .my-run-card {
   padding: 0.5em;
   display: flex;
@@ -205,17 +209,20 @@ h2 {
 
 .run-card,
 .circle-card,
+.my-circle-card,
 .my-run-card h3 {
   color: white;
 }
 
 .run-card,
 .circle-card,
+.my-circle-card,
 .my-run-card p {
   color: white;
 }
 
 .run-card button,
+.my-circle-card button,
 .circle-card button,
 .my-run-card button {
   font-size: 1rem;

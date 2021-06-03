@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import AddRunForm from "./AddRunForm";
 import RunsContainer from "./RunsContainer";
-import CirclesContainer from "./CirclesContainer";
 import MyRunsContainer from "./MyRunsContainer";
-import MyCirclesContainer from "./MyCirclesContainer";
 
 const baseUrl = "http://localhost:3000/";
 
@@ -18,9 +16,7 @@ export default function RunPage({ validateUser }) {
   });
 
   const [runs, setRuns] = useState([]);
-  const [circles, setCircles] = useState([]);
   const [myRuns, setMyRuns] = useState([]);
-  const [myCircles, setMyCircles] = useState([]);
 
   const fetchRuns = () => {
     fetch(baseUrl + "runs", {
@@ -33,21 +29,9 @@ export default function RunPage({ validateUser }) {
       .then((runs) => setRuns(runs));
   };
 
-  const fetchCircles = () => {
-    fetch(baseUrl + "circles", {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`,
-      },
-    })
-      .then((response) => response.json())
-      .then((circles) => setCircles(circles));
-  };
-
   useEffect(() => {
     validateUser();
     fetchRuns();
-    fetchCircles();
   }, []);
 
   //   EVENT HANDLERS
@@ -98,31 +82,9 @@ export default function RunPage({ validateUser }) {
     setMyRuns([...myRuns, runToAdd]);
   };
 
-  const joinCircle = (circleToJoin) => {
-    console.log("adding to my circles...");
-    setMyCircles([...myCircles, circleToJoin]);
-  };
-
-  const removeMyCircle = (myCircleToRemove) => {
-    console.log("removing my circle...");
-    let filteredCircles = myCircles.filter((myCircle) => {
-      return myCircle !== myCircleToRemove;
-    });
-    setMyCircles(filteredCircles);
-  };
-
   return (
     <div className="run-page">
-      <h2>Running circles</h2>
-      <CirclesContainer circles={circles} joinCircle={joinCircle} />
-      <h2>My circles</h2>
-      <MyCirclesContainer
-        myCircles={myCircles}
-        removeMyCircle={removeMyCircle}
-      />
-      <h2>Your training plan</h2>
-      <MyRunsContainer myRuns={myRuns} removeMyRun={removeMyRun} />
-      <h2>Add a run</h2>
+      <h2>Plan a run</h2>
       <AddRunForm
         formState={formState}
         handleSubmit={handleSubmit}
@@ -134,6 +96,8 @@ export default function RunPage({ validateUser }) {
         removeRun={removeRun}
         addToMyRuns={addToMyRuns}
       />
+      <h2>Your training plan</h2>
+      <MyRunsContainer myRuns={myRuns} removeMyRun={removeMyRun} />
     </div>
   );
 }
