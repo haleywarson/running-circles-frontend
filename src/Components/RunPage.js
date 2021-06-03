@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import AddRunForm from "./AddRunForm";
 import RunsContainer from "./RunsContainer";
 import CirclesContainer from "./CirclesContainer";
+import MyRunsContainer from "./MyRunsContainer";
 
 const baseUrl = "http://localhost:3000/";
 
@@ -84,12 +85,25 @@ export default function RunPage({ validateUser }) {
     setRuns(filteredRuns);
   };
 
+  const removeMyRun = (myRunToRemove) => {
+    console.log("removing my run...");
+    let filteredRuns = myRuns.filter((myRun) => {
+      return myRun !== myRunToRemove;
+    });
+    setMyRuns(filteredRuns);
+  };
+
   const addToMyRuns = (runToAdd) => {
+    console.log("adding to my runs...");
     setMyRuns([...myRuns, runToAdd]);
   };
 
   return (
     <div className="run-page">
+      <h2>Running circles</h2>
+      <CirclesContainer circles={circles} />
+      <h2>Your training plan</h2>
+      <MyRunsContainer myRuns={myRuns} removeMyRun={removeMyRun} />
       <h2>Add a run</h2>
       <AddRunForm
         formState={formState}
@@ -102,9 +116,6 @@ export default function RunPage({ validateUser }) {
         removeRun={removeRun}
         addToMyRuns={addToMyRuns}
       />
-      <h2>Running circles</h2>
-      <CirclesContainer circles={circles} />
-      <h2>Your training plan</h2>
     </div>
   );
 }

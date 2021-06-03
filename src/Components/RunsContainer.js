@@ -2,7 +2,7 @@ import React from "react";
 
 import RunCard from "./RunCard";
 
-export default function ActivityFeed({ runs, removeRun, addToMyRuns }) {
+export default function RunsContainer({ runs, removeRun, addToMyRuns }) {
   const displayRuns = () => {
     return runs.map((run) => (
       <RunCard
@@ -14,5 +14,5 @@ export default function ActivityFeed({ runs, removeRun, addToMyRuns }) {
     ));
   };
 
-  return <ul className="activity-feed">{displayRuns()}</ul>;
+  return <ul className="runs-container">{displayRuns()}</ul>;
 }
