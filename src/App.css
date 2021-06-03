@@ -236,6 +236,12 @@ h2 {
 .my-run-card p {
   color: white;
 }
+.stats p {
+  color: #79262d;
+  font-family: Teko, sans-serif;
+  margin-left: 1em;
+  padding: 0.3em;
+}
 
 .run-card button,
 .my-circle-card button,

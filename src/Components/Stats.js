@@ -34,10 +34,10 @@ export default function Stats({
   return (
     <div className="stats">
       <h2>welcome, {user.username}</h2>
-      <p>Your total circles: {user.circles.length}</p>
-      <p>Your circles: {displayMyCircles()}</p>
-      <p>Total runs: {user.runs.length}</p>
-      <p>Your run events: {displayMyRuns()}</p>
+      <p>your total circles: {user.circles.length}</p>
+      <p>your circles: {displayMyCircles()}</p>
+      <p>your total run events: {user.runs.length}</p>
+      <p>your run events: {displayMyRuns()}</p>
     </div>
   );
 }
