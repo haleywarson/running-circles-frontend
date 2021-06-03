@@ -13,7 +13,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 3px 15px rgba(226, 180, 180, 0.2);
 }
 
 #logo {
@@ -98,6 +98,34 @@ a {
 .signup-form h2 {
   color: white;
   padding: 0;
+}
+
+/* Welcome */
+.welcome-page {
+  height: 87vh;
+}
+
+.welcome-page-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.welcome-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  color: #79262d;
+  font-family: "Open Sans", sans-serif;
+  max-width: 17em;
+  flex-grow: 1;
+  flex-basis: 17em;
+  border-radius: 7%;
+  margin: 1rem;
+  padding: 0.5rem;
+  box-shadow: 2px 2px 3px rgba(206, 205, 205, 0.582);
 }
 
 /* || Run/Main */
@@ -209,7 +237,7 @@ footer {
 }
 
 footer p {
-  color: #cc6f64;
+  color: #79262d;
   font-size: 0.9rem;
   font-family: "Teko", sans-serif;
 }

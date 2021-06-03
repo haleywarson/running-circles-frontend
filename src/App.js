@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import RunPage from "./Components/RunPage";
 import SignUpForm from "./Components/SignUpForm";
 import LogInForm from "./Components/LogInForm";
+import WelcomePage from "./Components/WelcomePage";
 
 import "./App.css";
 
@@ -114,7 +115,9 @@ export default function App() {
             <Route path="/">
               <div className="signup-login-container">
                 {user.username ? (
-                  <h2>Welcome! {user.username}</h2>
+                  <>
+                    <WelcomePage user={user} />
+                  </>
                 ) : (
                   <>
                     <SignUpForm signUp={signUp} />
