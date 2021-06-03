@@ -113,7 +113,7 @@ export default function App() {
               <RunPage validateUser={validateUser} />
             </Route>
             <Route path="/">
-              <div className="signup-login-container">
+              <div className="main-container">
                 {user.username ? (
                   <>
                     <WelcomePage user={user} />

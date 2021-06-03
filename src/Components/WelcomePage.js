@@ -23,12 +23,12 @@ export default function WelcomePage({ user }) {
           </a>
           my circles
         </div>
-        <div className="welcome-div">
+        {/* <div className="welcome-div">
           <a href="http://localhost:3001/run">
             <i class="fas fa-user-circle" id="dashboard-icon"></i>
           </a>
           dashboard
-        </div>
+        </div> */}
       </div>
     </div>
   );

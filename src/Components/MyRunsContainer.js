@@ -4,7 +4,7 @@ import MyRunCard from "./MyRunCard";
 
 export default function MyRunsContainer({ myRuns, removeMyRun }) {
   const displayMyRuns = () => {
-    myRuns.map((myRun) => (
+    return myRuns.map((myRun) => (
       <MyRunCard key={myRun.id} myRun={myRun} removeMyRun={removeMyRun} />
     ));
   };
