@@ -150,7 +150,8 @@ a {
 /* || Run/Main */
 
 .run-page,
-.circle-page {
+.circle-page,
+.dashboard {
   overflow: auto;
   height: 87vh;
 }
@@ -163,7 +164,8 @@ h2 {
 }
 
 .run-page h2,
-.circle-page h2 {
+.circle-page h2,
+.stats h2 {
   font-family: "Teko", sans-serif;
   font-size: 2rem;
   color: #79262d;

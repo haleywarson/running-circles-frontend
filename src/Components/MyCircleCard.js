@@ -4,7 +4,7 @@ export default function MyCircleCard({ myCircle, removeMyCircle }) {
   return (
     <div className="my-circle-card">
       <p>{myCircle.name}</p>
-      <button onClick={() => removeMyCircle(myCircle)}>Remove circle</button>
+      <button onClick={() => removeMyCircle(myCircle)}>Remove</button>
     </div>
   );
 }

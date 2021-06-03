@@ -6,6 +6,7 @@ import SignUpForm from "./Components/SignUpForm";
 import LogInForm from "./Components/LogInForm";
 import WelcomePage from "./Components/WelcomePage";
 import CirclePage from "./Components/CirclePage";
+import Stats from "./Components/Stats";
 
 import "./App.css";
 
@@ -14,6 +15,9 @@ const baseUrl = "http://localhost:3000/";
 export default function App() {
   const [user, setUser] = useState({});
   const [error, setError] = useState("");
+
+  const [runs, setRuns] = useState([]);
+  const [myRuns, setMyRuns] = useState([]);
 
   const signUp = (user) => {
     fetch(baseUrl + "users", {
@@ -105,6 +109,11 @@ export default function App() {
                 </Link>
               </li>
               <li className="nav-item">
+                <Link to="/stats" className="nav-link">
+                  Stats
+                </Link>
+              </li>
+              <li className="nav-item">
                 <Link to="/" className="nav-link" onClick={logout}>
                   Logout
                 </Link>
@@ -116,10 +125,19 @@ export default function App() {
         <main>
           <Switch>
             <Route path="/run">
-              <RunPage validateUser={validateUser} />
+              <RunPage
+                validateUser={validateUser}
+                runs={runs}
+                setRuns={setRuns}
+                myRuns={myRuns}
+                setMyRuns={setMyRuns}
+              />
             </Route>
             <Route path="/circles">
               <CirclePage validateUser={validateUser} />
+            </Route>
+            <Route path="/stats">
+              <Stats validateUser={validateUser} user={user} myRuns={myRuns} />
             </Route>
             <Route path="/">
               <div className="main-container">

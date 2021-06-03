@@ -6,17 +6,24 @@ import MyRunsContainer from "./MyRunsContainer";
 
 const baseUrl = "http://localhost:3000/";
 
-export default function RunPage({ validateUser }) {
+export default function RunPage({
+  validateUser,
+  runs,
+  setRuns,
+  myRuns,
+  setMyRuns,
+}) {
   //   STATE AND FETCH
   const [formState, setFormState] = useState({
     runName: "",
     runLocation: "",
     runDate: "",
     runTime: "",
+    // circles: []
   });
 
-  const [runs, setRuns] = useState([]);
-  const [myRuns, setMyRuns] = useState([]);
+  // const [runs, setRuns] = useState([]);
+  // const [myRuns, setMyRuns] = useState([]);
 
   const fetchRuns = () => {
     fetch(baseUrl + "runs", {

@@ -41,6 +41,22 @@ export default function AddRunForm({ formState, handleSubmit, handleChange }) {
         value={formState.runTime}
         onChange={handleChange}
       />
+      {/* <select
+        name="circle"
+        id="circle"
+        className="form-field"
+        value={formState.circles}
+        onChange={handleChange}
+      >
+        <option value="" selected disabled>
+          Select circle
+        </option>
+        {circles.map((c) => (
+          <option key={c.id} value={c.id}>
+            {c.name}
+          </option>
+        ))}
+      </select> */}
       <input id="submit-run-btn" type="submit" value="Add run" />
     </form>
   );
