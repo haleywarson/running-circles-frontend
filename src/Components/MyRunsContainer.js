@@ -9,5 +9,7 @@ export default function MyRunsContainer({ myRuns, removeMyRun }) {
     ));
   };
 
-  return <ul className="my-runs-container">{displayMyRuns()}</ul>;
+  return (
+    <ul className="my-runs-container">{myRuns ? displayMyRuns() : null}</ul>
+  );
 }

@@ -4,12 +4,12 @@ import AddRunForm from "./AddRunForm";
 import RunsContainer from "./RunsContainer";
 import CirclesContainer from "./CirclesContainer";
 import MyRunsContainer from "./MyRunsContainer";
+import MyCirclesContainer from "./MyCirclesContainer";
 
 const baseUrl = "http://localhost:3000/";
 
 export default function RunPage({ validateUser }) {
   //   STATE AND FETCH
-
   const [formState, setFormState] = useState({
     runName: "",
     runLocation: "",
@@ -20,6 +20,7 @@ export default function RunPage({ validateUser }) {
   const [runs, setRuns] = useState([]);
   const [circles, setCircles] = useState([]);
   const [myRuns, setMyRuns] = useState([]);
+  const [myCircles, setMyCircles] = useState([]);
 
   const fetchRuns = () => {
     fetch(baseUrl + "runs", {
@@ -50,7 +51,6 @@ export default function RunPage({ validateUser }) {
   }, []);
 
   //   EVENT HANDLERS
-
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("adding run...");
@@ -98,10 +98,28 @@ export default function RunPage({ validateUser }) {
     setMyRuns([...myRuns, runToAdd]);
   };
 
+  const joinCircle = (circleToJoin) => {
+    console.log("adding to my circles...");
+    setMyCircles([...myCircles, circleToJoin]);
+  };
+
+  const removeMyCircle = (myCircleToRemove) => {
+    console.log("removing my circle...");
+    let filteredCircles = myCircles.filter((myCircle) => {
+      return myCircle !== myCircleToRemove;
+    });
+    setMyCircles(filteredCircles);
+  };
+
   return (
     <div className="run-page">
       <h2>Running circles</h2>
-      <CirclesContainer circles={circles} />
+      <CirclesContainer circles={circles} joinCircle={joinCircle} />
+      <h2>My circles</h2>
+      <MyCirclesContainer
+        myCircles={myCircles}
+        removeMyCircle={removeMyCircle}
+      />
       <h2>Your training plan</h2>
       <MyRunsContainer myRuns={myRuns} removeMyRun={removeMyRun} />
       <h2>Add a run</h2>
