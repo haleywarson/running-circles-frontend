@@ -76,14 +76,6 @@ export default function RunPage({
     });
   };
 
-  const removeRun = (runToRemove) => {
-    console.log("removing run...");
-    let filteredRuns = runs.filter((run) => {
-      return run !== runToRemove;
-    });
-    setRuns(filteredRuns);
-  };
-
   const addToMyRuns = (runToAdd) => {
     console.log("adding to my runs...");
     setMyRuns([...myRuns, runToAdd]);

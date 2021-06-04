@@ -107,10 +107,18 @@ export default function App() {
 
   const deleteRun = (runToDelete) => {
     console.log("deleting run...");
+
     let token = localStorage.getItem("token");
     let filteredRuns = runs.filter((run) => {
       return run !== runToDelete;
     });
+    setRuns(filteredRuns);
+
+    let filteredMyRuns = myRuns.filter((myRun) => {
+      return myRun !== runToDelete;
+    });
+    setMyRuns(filteredMyRuns);
+
     fetch(baseUrl + "runs/" + runToDelete.id, {
       method: "DELETE",
       headers: {
@@ -118,7 +126,7 @@ export default function App() {
       },
     })
       .then((response) => response.json())
-      .then((filteredRuns) => setRuns(filteredRuns));
+      .then(console.log);
   };
 
   useEffect(() => {
