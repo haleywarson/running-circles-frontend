@@ -12,6 +12,8 @@ export default function RunPage({
   setRuns,
   myRuns,
   setMyRuns,
+  removeMyRun,
+  deleteRun,
 }) {
   //   STATE AND FETCH
   const [formState, setFormState] = useState({
@@ -82,14 +84,6 @@ export default function RunPage({
     setRuns(filteredRuns);
   };
 
-  const removeMyRun = (myRunToRemove) => {
-    console.log("removing my run...");
-    let filteredRuns = myRuns.filter((myRun) => {
-      return myRun !== myRunToRemove;
-    });
-    setMyRuns(filteredRuns);
-  };
-
   const addToMyRuns = (runToAdd) => {
     console.log("adding to my runs...");
     setMyRuns([...myRuns, runToAdd]);
@@ -110,7 +104,7 @@ export default function RunPage({
           <h2>Join a run</h2>
           <RunsContainer
             runs={runs}
-            removeRun={removeRun}
+            deleteRun={deleteRun}
             addToMyRuns={addToMyRuns}
           />
         </>

@@ -182,7 +182,7 @@ h2 {
   border-radius: 13px;
   font-family: "Open Sans", sans-serif;
   background-color: white;
-  font-size: 1rem;
+  font-size: 0.8rem;
   border-style: solid;
   width: 100%;
   box-shadow: 2px 2px 3px rgba(206, 205, 205, 0.582);
@@ -211,8 +211,7 @@ h2 {
 }
 
 #circle-card-btn,
-#my-circle-card-btn,
-#my-run-card-btn {
+#my-circle-card-btn {
   font-size: 1rem;
   font-family: "Teko", sans-serif;
   color: white;
@@ -220,7 +219,8 @@ h2 {
   margin: 1em;
 }
 
-#run-card-btn {
+#run-card-btn,
+#my-run-card-btn {
   margin: 0.2em;
   padding: 0.2em;
   font-size: 1rem;

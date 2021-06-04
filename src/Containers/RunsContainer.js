@@ -2,13 +2,13 @@ import React from "react";
 
 import RunCard from "../Components/RunCard";
 
-export default function RunsContainer({ runs, removeRun, addToMyRuns }) {
+export default function RunsContainer({ runs, deleteRun, addToMyRuns }) {
   const displayRuns = () => {
     return runs.map((run) => (
       <RunCard
         key={run.id}
         run={run}
-        removeRun={removeRun}
+        deleteRun={deleteRun}
         addToMyRuns={addToMyRuns}
       />
     ));

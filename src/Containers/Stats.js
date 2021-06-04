@@ -16,17 +16,19 @@ export default function Stats({
   }, []);
 
   const displayMyRuns = () => {
+    console.log("my runs:", myRuns);
     return myRuns.map((myRun) => (
       <MyRunCard key={myRun.id} myRun={myRun} removeMyRun={removeMyRun} />
     ));
   };
 
   const displayMyCircles = () => {
+    console.log("my circles:", myCircles);
     return myCircles.map((myCircle) => (
       <MyCircleCard
         key={myCircle.id}
-        myCircle={myCircle}
         removeMyCircle={removeMyCircle}
+        myCircle={myCircle}
       />
     ));
   };

@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import {
-  Navbar,
-  Nav,
-  NavDropdown,
-  Form,
-  FormControl,
-  Button,
-} from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 
 import RunPage from "./Containers/RunPage";
 import SignUpForm from "./Components/SignUpForm";
@@ -104,6 +97,30 @@ export default function App() {
     setMyCircles(filteredCircles);
   };
 
+  const removeMyRun = (myRunToRemove) => {
+    console.log("removing my run...");
+    let filteredRuns = myRuns.filter((myRun) => {
+      return myRun !== myRunToRemove;
+    });
+    setMyRuns(filteredRuns);
+  };
+
+  const deleteRun = (runToDelete) => {
+    console.log("deleting run...");
+    let token = localStorage.getItem("token");
+    let filteredRuns = runs.filter((run) => {
+      return run !== runToDelete;
+    });
+    fetch(baseUrl + "runs/" + runToDelete.id, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((filteredRuns) => setRuns(filteredRuns));
+  };
+
   useEffect(() => {
     validateUser();
   }, []);
@@ -147,6 +164,8 @@ export default function App() {
                 setRuns={setRuns}
                 myRuns={myRuns}
                 setMyRuns={setMyRuns}
+                removeMyRun={removeMyRun}
+                deleteRun={deleteRun}
               />
             </Route>
             <Route path="/circles">
@@ -166,6 +185,8 @@ export default function App() {
                   user={user}
                   myRuns={myRuns}
                   myCircles={myCircles}
+                  removeMyRun={removeMyRun}
+                  removeMyCircle={removeMyCircle}
                 />
               ) : null}
             </Route>

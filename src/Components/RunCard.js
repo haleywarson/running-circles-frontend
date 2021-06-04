@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 
-export default function RunCard({ run, removeRun, addToMyRuns }) {
+export default function RunCard({ run, deleteRun, addToMyRuns }) {
   return (
     <div className="run-card">
       <h3>{run.name}</h3>
@@ -9,8 +9,8 @@ export default function RunCard({ run, removeRun, addToMyRuns }) {
       <p>{run.date}</p>
       <p>{run.time}</p>
       <div className="combined-buttons">
-        <Button variant="dark" id="run-card-btn" onClick={() => removeRun(run)}>
-          Remove
+        <Button variant="dark" id="run-card-btn" onClick={() => deleteRun(run)}>
+          Delete
         </Button>
         <Button
           variant="dark"

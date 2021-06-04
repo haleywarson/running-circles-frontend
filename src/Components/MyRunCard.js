@@ -13,7 +13,7 @@ export default function MyRunCard({ myRun, removeMyRun }) {
         id="my-run-card-btn"
         onClick={() => removeMyRun(myRun)}
       >
-        Delete
+        Remove
       </Button>
     </div>
   );
