@@ -1,6 +1,6 @@
 import React from "react";
 
-import RunCard from "./RunCard";
+import RunCard from "../Components/RunCard";
 
 export default function RunsContainer({ runs, removeRun, addToMyRuns }) {
   const displayRuns = () => {

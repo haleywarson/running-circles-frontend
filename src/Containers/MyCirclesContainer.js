@@ -1,6 +1,6 @@
 import React from "react";
 
-import MyCircleCard from "./MyCircleCard";
+import MyCircleCard from "../Components/MyCircleCard";
 
 export default function MyCirclesContainer({
   myCircles,

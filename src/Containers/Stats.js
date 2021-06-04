@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
-import MyRunCard from "./MyRunCard";
-import MyCircleCard from "./MyCircleCard";
+import MyRunCard from "../Components/MyRunCard";
+import MyCircleCard from "../Components/MyCircleCard";
 
 export default function Stats({
   validateUser,

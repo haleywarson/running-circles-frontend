@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import RunPage from "./Components/RunPage";
+import RunPage from "./Containers/RunPage";
 import SignUpForm from "./Components/SignUpForm";
 import LogInForm from "./Components/LogInForm";
-import WelcomePage from "./Components/WelcomePage";
-import CirclePage from "./Components/CirclePage";
-import Stats from "./Components/Stats";
+import WelcomePage from "./Containers/WelcomePage";
+import CirclePage from "./Containers/CirclePage";
+import Stats from "./Containers/Stats";
 
 import "./App.css";
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router";
 
-import CircleCard from "./CircleCard";
+import CircleCard from "../Components/CircleCard";
 
 export default function CirclesContainer({ circles, joinCircle }) {
   const displayCircles = () => {

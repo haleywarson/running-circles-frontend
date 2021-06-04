@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import AddRunForm from "./AddRunForm";
+import AddRunForm from "../Components/AddRunForm";
 import RunsContainer from "./RunsContainer";
 import MyRunsContainer from "./MyRunsContainer";
 
