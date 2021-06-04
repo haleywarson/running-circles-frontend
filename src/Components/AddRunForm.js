@@ -1,5 +1,7 @@
 import React from "react";
 
+import Button from "react-bootstrap/Button";
+
 export default function AddRunForm({ formState, handleSubmit, handleChange }) {
   return (
     <form className="add-run-form" onSubmit={handleSubmit}>
@@ -41,23 +43,9 @@ export default function AddRunForm({ formState, handleSubmit, handleChange }) {
         value={formState.runTime}
         onChange={handleChange}
       />
-      {/* <select
-        name="circle"
-        id="circle"
-        className="form-field"
-        value={formState.circles}
-        onChange={handleChange}
-      >
-        <option value="" selected disabled>
-          Select circle
-        </option>
-        {circles.map((c) => (
-          <option key={c.id} value={c.id}>
-            {c.name}
-          </option>
-        ))}
-      </select> */}
-      <input id="submit-run-btn" type="submit" value="Add run" />
+      <Button variant="dark" type="submit" id="submit-run-btn">
+        Add run
+      </Button>
     </form>
   );
 }

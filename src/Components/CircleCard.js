@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "react-bootstrap/Button";
 
 export default function CircleCard({ circle, joinCircle }) {
   const displayCircleUsers = () => {
@@ -12,7 +13,14 @@ export default function CircleCard({ circle, joinCircle }) {
         Runners:
         {displayCircleUsers()}
       </ul>
-      <button onClick={() => joinCircle(circle)}>Join</button>
+      {/* <button onClick={() => joinCircle(circle)}>Join</button> */}
+      <Button
+        variant="dark"
+        id="circle-card-btn"
+        onClick={() => joinCircle(circle)}
+      >
+        Join
+      </Button>
     </div>
   );
 }

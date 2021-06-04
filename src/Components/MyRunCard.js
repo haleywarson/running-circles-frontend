@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "react-bootstrap/Button";
 
 export default function MyRunCard({ myRun, removeMyRun }) {
   return (
@@ -7,7 +8,13 @@ export default function MyRunCard({ myRun, removeMyRun }) {
       <p>{myRun.location}</p>
       <p>{myRun.date}</p>
       <p>{myRun.time}</p>
-      <button onClick={() => removeMyRun(myRun)}>Delete</button>
+      <Button
+        variant="dark"
+        id="my-run-card-btn"
+        onClick={() => removeMyRun(myRun)}
+      >
+        Delete
+      </Button>
     </div>
   );
 }
