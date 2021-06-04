@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  Navbar,
+  Nav,
+  NavDropdown,
+  Form,
+  FormControl,
+  Button,
+} from "react-bootstrap";
 
 import RunPage from "./Containers/RunPage";
 import SignUpForm from "./Components/SignUpForm";
@@ -103,43 +111,32 @@ export default function App() {
   return (
     <div className="App">
       <Router>
-        <header>
-          <Link to="/" className="nav-link">
-            <h1 id="logo">RUNNING CIRCLES</h1>
-          </Link>
-          <nav className="nav-menu-active">
-            <ul className="nav-list">
-              {user.username ? (
-                <li className="nav-item">
-                  <Link to="/run" className="nav-link">
-                    Run
-                  </Link>
-                </li>
-              ) : null}
-              {user.username ? (
-                <li className="nav-item">
-                  <Link to="/circles" className="nav-link">
-                    Circles
-                  </Link>
-                </li>
-              ) : null}
-              {user.username ? (
-                <li className="nav-item">
-                  <Link to="/stats" className="nav-link">
-                    Stats
-                  </Link>
-                </li>
-              ) : null}
-              {user.username ? (
-                <li className="nav-item">
-                  <Link to="/" className="nav-link" onClick={logout}>
-                    Logout
-                  </Link>
-                </li>
-              ) : null}
-            </ul>
-          </nav>
-        </header>
+        {/* <header> */}
+        <Navbar expand="lg" sticky="top" id="nav-bar">
+          {/* <Link to="/" className="nav-link">
+              <h1 id="logo">RUNNING CIRCLES</h1>
+            </Link> */}
+          <Navbar.Brand id="logo" href="/">
+            RUNNING CIRCLES
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mr-auto">
+              <Nav.Link href="/run" id="nav-link">
+                Run
+              </Nav.Link>
+              <Nav.Link id="nav-link" href="/circles">
+                Circles
+              </Nav.Link>
+              <Nav.Link id="nav-link" href="/stats">
+                Stats
+              </Nav.Link>
+              <Nav.Link id="nav-link" href="/" onClick={logout}>
+                Logout
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
 
         <main>
           <Switch>

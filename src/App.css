@@ -6,49 +6,30 @@ black */
 /* logo= <a href="https://www.clipartmax.com/middle/m2i8A0K9N4H7G6i8_running-man-silhouette-logo/" target="_blank">Running Man Silhouette Logo @clipartmax.com</a> */
 
 /* || Header & Nav */
-header {
+#nav-bar {
   background-color: white;
-  height: 8vh;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0px 3px 15px rgba(226, 180, 180, 0.2);
+  /* height: 8vh;
+  width: 100%; */
+  box-shadow: 2px 3px 15px rgba(226, 180, 180, 0.2);
 }
 
 #logo {
   color: #79262d;
   font-size: 2rem;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
   font-family: "Teko", sans-serif;
-}
-
-header a {
-  text-decoration: none;
 }
 
 #logo:hover {
   opacity: 0.7;
 }
 
-.nav-list {
-  display: flex;
-  flex-direction: row;
-}
-.nav-link,
-a {
-  list-style: none;
-  display: inline-block;
-  text-decoration: none;
+#nav-link {
   color: #79262d;
-  font-size: 0.7rem;
+  font-size: 1rem;
   font-family: "Open Sans", sans-serif;
-  display: flex;
-  padding: 0.3em;
 }
 
-.nav-link:hover {
+#nav-link:hover {
   opacity: 0.9;
 }
 
