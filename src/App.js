@@ -109,21 +109,27 @@ export default function App() {
           </Link>
           <nav className="nav-menu-active">
             <ul className="nav-list">
-              <li className="nav-item">
-                <Link to="/run" className="nav-link">
-                  Run
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/circles" className="nav-link">
-                  Circles
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/stats" className="nav-link">
-                  Stats
-                </Link>
-              </li>
+              {user.username ? (
+                <li className="nav-item">
+                  <Link to="/run" className="nav-link">
+                    Run
+                  </Link>
+                </li>
+              ) : null}
+              {user.username ? (
+                <li className="nav-item">
+                  <Link to="/circles" className="nav-link">
+                    Circles
+                  </Link>
+                </li>
+              ) : null}
+              {user.username ? (
+                <li className="nav-item">
+                  <Link to="/stats" className="nav-link">
+                    Stats
+                  </Link>
+                </li>
+              ) : null}
               {user.username ? (
                 <li className="nav-item">
                   <Link to="/" className="nav-link" onClick={logout}>
