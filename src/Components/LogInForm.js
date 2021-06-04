@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 export default function LogInForm({ login, error }) {
   const [username, setUsername] = useState("");
@@ -13,19 +15,31 @@ export default function LogInForm({ login, error }) {
   };
 
   return (
-    <form className="login-form" onSubmit={handleSubmit}>
-      <h2>Login</h2>
-      <label>Username</label>
-      <input name="username" value={username} onChange={handleUsernameChange} />
-      <label>Password</label>
-      <input
-        type="password"
-        name="password"
-        value={password}
-        onChange={(event) => setPassword(event.target.value)}
-      />
-      {error ? <p style={{ color: "red" }}>{error}</p> : null}
-      <input type="submit" value="Login" />
-    </form>
+    <Form className="login-form" onSubmit={handleSubmit}>
+      <h2>Log In</h2>
+      <Form.Group controlId="username">
+        <Form.Label>Username</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Enter username"
+          value={username}
+          onChange={handleUsernameChange}
+        />
+      </Form.Group>
+
+      <Form.Group controlId="formBasicPassword">
+        <Form.Label>Password</Form.Label>
+        <Form.Control
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+        />
+      </Form.Group>
+
+      <Button variant="dark" type="submit">
+        Log In
+      </Button>
+    </Form>
   );
 }

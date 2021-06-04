@@ -174,7 +174,6 @@ export default function App() {
                   </>
                 ) : (
                   <>
-                    <p>running is fun with your circle of friends...</p>
                     <SignUpForm signUp={signUp} />
                     <LogInForm login={login} error={error} />
                   </>
