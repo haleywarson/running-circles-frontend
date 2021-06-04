@@ -14,6 +14,7 @@ import "./App.css";
 const baseUrl = "http://localhost:3000/";
 
 export default function App() {
+  // STATE
   const [user, setUser] = useState({});
   const [error, setError] = useState("");
 
@@ -23,6 +24,7 @@ export default function App() {
   const [circles, setCircles] = useState([]);
   const [myCircles, setMyCircles] = useState([]);
 
+  // SIGNUP AND LOGIN/OUT
   const signUp = (user) => {
     fetch(baseUrl + "users", {
       method: "POST",
@@ -66,11 +68,6 @@ export default function App() {
       });
   };
 
-  const logout = () => {
-    localStorage.removeItem("token");
-    setUser({});
-  };
-
   const validateUser = () => {
     let token = localStorage.getItem("token");
     if (token) {
@@ -87,6 +84,64 @@ export default function App() {
           }
         });
     }
+  };
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    setUser({});
+  };
+
+  // FETCH
+
+  const fetchCircles = () => {
+    fetch(baseUrl + "circles", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((circles) => setCircles(circles));
+  };
+
+  const fetchRuns = () => {
+    fetch(baseUrl + "runs", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((runs) => setRuns(runs));
+  };
+
+  useEffect(() => {
+    validateUser();
+    fetchCircles();
+    fetchRuns();
+  }, []);
+
+  // EVENT HANDLERS
+
+  const addToMyRuns = (runToAdd) => {
+    console.log("adding to my runs...");
+    setMyRuns([...myRuns, runToAdd]);
+    fetch(baseUrl + "user_runs", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.token}`,
+      },
+      body: JSON.stringify({
+        user_run: {
+          user_id: user.id,
+          run_id: runToAdd.id,
+        },
+      }),
+    })
+      .then((response) => response.json())
+      .then((newUserRun) => console.log(newUserRun));
   };
 
   const removeMyCircle = (myCircleToRemove) => {
@@ -129,18 +184,15 @@ export default function App() {
       .then(console.log);
   };
 
-  useEffect(() => {
-    validateUser();
-  }, []);
+  const joinCircle = (circleToJoin) => {
+    console.log("adding to my circles...");
+    setMyCircles([...myCircles, circleToJoin]);
+  };
 
   return (
     <div className="App">
       <Router>
-        {/* <header> */}
         <Navbar expand="lg" sticky="top" id="nav-bar">
-          {/* <Link to="/" className="nav-link">
-              <h1 id="logo">RUNNING CIRCLES</h1>
-            </Link> */}
           <Navbar.Brand id="logo" href="/">
             RUNNING CIRCLES
           </Navbar.Brand>
@@ -169,20 +221,21 @@ export default function App() {
               <RunPage
                 validateUser={validateUser}
                 runs={runs}
-                setRuns={setRuns}
                 myRuns={myRuns}
-                setMyRuns={setMyRuns}
                 removeMyRun={removeMyRun}
                 deleteRun={deleteRun}
+                addToMyRuns={addToMyRuns}
+                setMyRuns={setMyRuns}
+                setRuns={setRuns}
+                user={user}
               />
             </Route>
             <Route path="/circles">
               <CirclePage
                 validateUser={validateUser}
-                myCircles={myCircles}
                 circles={circles}
-                setCircles={setCircles}
-                setMyCircles={setMyCircles}
+                myCircles={myCircles}
+                joinCircle={joinCircle}
                 removeMyCircle={removeMyCircle}
               />
             </Route>

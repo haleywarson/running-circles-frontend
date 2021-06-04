@@ -9,44 +9,33 @@ const baseUrl = "http://localhost:3000/";
 export default function RunPage({
   validateUser,
   runs,
-  setRuns,
   myRuns,
-  setMyRuns,
   removeMyRun,
   deleteRun,
+  addToMyRuns,
+  setMyRuns,
+  setRuns,
+  user,
 }) {
-  //   STATE AND FETCH
+  //   STATE
   const [formState, setFormState] = useState({
     runName: "",
     runLocation: "",
     runDate: "",
     runTime: "",
-    // circles: []
   });
-
   const [toggleForm, setToggleForm] = useState(false);
-
-  const fetchRuns = () => {
-    fetch(baseUrl + "runs", {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`,
-      },
-    })
-      .then((response) => response.json())
-      .then((runs) => setRuns(runs));
-  };
 
   useEffect(() => {
     validateUser();
-    fetchRuns();
   }, []);
 
-  //   EVENT HANDLERS
+  //   FORM EVENT HANDLERS
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("adding run...");
     const newRun = formState;
+
     fetch(baseUrl + "runs", {
       method: "POST",
       headers: {
@@ -67,6 +56,21 @@ export default function RunPage({
       .then(
         (newRun) => (setMyRuns([...myRuns, newRun]), setRuns([...runs, newRun]))
       );
+
+    fetch(baseUrl + "user_runs", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.token}`,
+      },
+      body: JSON.stringify({
+        user_run: {
+          user_id: user.id,
+          run_id: newRun.id,
+        },
+      }),
+    });
   };
 
   const handleChange = ({ target }) => {
@@ -74,11 +78,6 @@ export default function RunPage({
       ...formState,
       [target.name]: target.value,
     });
-  };
-
-  const addToMyRuns = (runToAdd) => {
-    console.log("adding to my runs...");
-    setMyRuns([...myRuns, runToAdd]);
   };
 
   return (

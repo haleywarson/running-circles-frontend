@@ -9,34 +9,13 @@ export default function RunPage({
   validateUser,
   myCircles,
   circles,
-  setCircles,
-  setMyCircles,
+  joinCircle,
   removeMyCircle,
 }) {
-  //   STATE AND FETCH
-
-  const fetchCircles = () => {
-    fetch(baseUrl + "circles", {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`,
-      },
-    })
-      .then((response) => response.json())
-      .then((circles) => setCircles(circles));
-  };
-
+ 
   useEffect(() => {
     validateUser();
-    fetchCircles();
   }, []);
-
-  //   EVENT HANDLERS
-
-  const joinCircle = (circleToJoin) => {
-    console.log("adding to my circles...");
-    setMyCircles([...myCircles, circleToJoin]);
-  };
 
   return (
     <div className="circle-page">
