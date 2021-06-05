@@ -1,70 +1,120 @@
-# Getting Started with Create React App
+# Running Circles
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
 
-## Available Scripts
+[General Info](#general-info)
 
-In the project directory, you can run:
+[Technologies](#technologies)
 
-### `yarn start`
+[Setup](#setup)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[Features](#features)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+[Code Examples](#code-examples)
 
-### `yarn test`
+[Inspiration](#inspiration)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[Contact](#contact)
 
-### `yarn build`
+## General Info
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Running Circles allows you to plan and join running events with friends in your circles.
+The backend repo for this project can be found [here](https://github.com/haleywarson/running-circles-backend).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Technologies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- React
+- CSS
+- Html
+- JSX
+- Rails
+- Ruby
 
-### `yarn eject`
+## Setup
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+First, fork and clone the backend repo. Open the code, run "bundle install" and "rails s". 
+Then fork and clone the frontend repo, open the code, run "npm install" and "npm start."
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Features
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- User authorization and login/logout.
+- Schedule a run and add it to your training plan.
+- Review and join running events.
+- View your running circles of friends and training partners.
+- Join running circles to train with new friends.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Code Examples
 
-## Learn More
+```js
+  const login = (username, password) => {
+    fetch(baseUrl + "login", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user: {
+          username,
+          password,
+        },
+      }),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        if (result.token) {
+          localStorage.setItem("token", result.token);
+          setUser(result.user);
+        } else {
+          setError(result.error);
+        }
+      });
+  };
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  const validateUser = () => {
+    let token = localStorage.getItem("token");
+    if (token) {
+      fetch(baseUrl + "profile", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((result) => {
+          if (result.id) {
+            setUser(result);
+          }
+        });
+    }
+  };
+```
+```rb
+def current_user 
+        auth_header = request.headers["Authorization"] 
+        if auth_header
+            token = auth_header.split(" ")[1]
+            begin
+                @user_id = JWT.decode(token, Rails.application.secrets.secret_key_base[0])[0]["user_id"]
+                @user = User.find(@user_id)
+            rescue JWT::DecodeError
+                nil
+            end 
+        end 
+        if(@user_id)
+            @user=User.find(@user_id)
+        else
+            nil 
+        end 
+    end 
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Inspiration
 
-### Code Splitting
+Running is more fun when you train with friends!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Contact
 
-### Analyzing the Bundle Size
+Running Circles was created by [Haley Warson](https://www.linkedin.com/in/haleywarson/).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Contact me with any questions.
