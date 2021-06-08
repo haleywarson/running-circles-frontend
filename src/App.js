@@ -115,25 +115,25 @@ export default function App() {
       .then((runs) => setRuns(runs));
   };
 
-  // const fetchMyRunsCircles = () => {
-  //   fetch(baseUrl + "users/" + user.id, {
-  //     method: "GET",
-  //     headers: {
-  //       Authorization: `Bearer ${localStorage.token}`,
-  //     },
-  //   })
-  //     .then((response) => response.json())
-  //     .then(
-  //       (user) => setMyRuns([...myRuns, user.runs]),
-  //       setMyCircles([...myCircles, user.circles])
-  //     );
-  // };
+  const fetchUserData = () => {
+    fetch(baseUrl + "users/" + user.id, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then(
+        (user) => setMyRuns([...myRuns, user.runs]),
+        setMyCircles([...myCircles, user.circles])
+      );
+  };
 
   useEffect(() => {
     validateUser();
-    // fetchMyRunsCircles();
     fetchRuns();
     fetchCircles();
+    fetchUserData();
     // eslint-disable-next-line
   }, []);
 
@@ -141,7 +141,7 @@ export default function App() {
 
   const addToMyRuns = (runToAdd) => {
     console.log("adding to my runs...");
-    setMyRuns([...myRuns, runToAdd]);
+
     fetch(baseUrl + "user_runs", {
       method: "POST",
       headers: {
@@ -157,7 +157,10 @@ export default function App() {
       }),
     })
       .then((response) => response.json())
-      .then((newUserRun) => console.log(newUserRun));
+      .then(
+        (newUserRun) => console.log(newUserRun),
+        setMyRuns([...myRuns, user.runs])
+      );
   };
 
   const removeMyCircle = (myCircleToRemove) => {
