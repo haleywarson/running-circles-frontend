@@ -3,8 +3,6 @@ import React, { useEffect } from "react";
 import CirclesContainer from "./CirclesContainer";
 import MyCirclesContainer from "./MyCirclesContainer";
 
-const baseUrl = "http://localhost:3000/";
-
 export default function RunPage({
   validateUser,
   myCircles,
@@ -12,9 +10,9 @@ export default function RunPage({
   joinCircle,
   removeMyCircle,
 }) {
- 
   useEffect(() => {
     validateUser();
+    // eslint-disable-next-line
   }, []);
 
   return (

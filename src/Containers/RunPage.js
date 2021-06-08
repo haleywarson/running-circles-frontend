@@ -24,16 +24,17 @@ export default function RunPage({
     runDate: "",
     runTime: "",
   });
+
   const [toggleForm, setToggleForm] = useState(false);
 
   useEffect(() => {
     validateUser();
+    // eslint-disable-next-line
   }, []);
 
   //   FORM EVENT HANDLERS
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("adding run...");
     const newRun = formState;
 
     fetch(baseUrl + "runs", {
@@ -54,7 +55,8 @@ export default function RunPage({
     })
       .then((response) => response.json())
       .then(
-        (newRun) => (setMyRuns([...myRuns, newRun]), setRuns([...runs, newRun]))
+        (newRun) => setRuns([...runs, newRun]),
+        setMyRuns([...myRuns, newRun])
       );
 
     fetch(baseUrl + "user_runs", {

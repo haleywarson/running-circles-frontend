@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Navbar, Nav } from "react-bootstrap";
 
 import RunPage from "./Containers/RunPage";
@@ -115,10 +115,26 @@ export default function App() {
       .then((runs) => setRuns(runs));
   };
 
+  // const fetchMyRunsCircles = () => {
+  //   fetch(baseUrl + "users/" + user.id, {
+  //     method: "GET",
+  //     headers: {
+  //       Authorization: `Bearer ${localStorage.token}`,
+  //     },
+  //   })
+  //     .then((response) => response.json())
+  //     .then(
+  //       (user) => setMyRuns([...myRuns, user.runs]),
+  //       setMyCircles([...myCircles, user.circles])
+  //     );
+  // };
+
   useEffect(() => {
     validateUser();
-    fetchCircles();
+    // fetchMyRunsCircles();
     fetchRuns();
+    fetchCircles();
+    // eslint-disable-next-line
   }, []);
 
   // EVENT HANDLERS
@@ -248,6 +264,8 @@ export default function App() {
                   myCircles={myCircles}
                   removeMyRun={removeMyRun}
                   removeMyCircle={removeMyCircle}
+                  fetchRuns={fetchRuns}
+                  fetchCircles={fetchCircles}
                 />
               ) : null}
             </Route>

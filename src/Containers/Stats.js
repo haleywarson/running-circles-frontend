@@ -13,17 +13,16 @@ export default function Stats({
 }) {
   useEffect(() => {
     validateUser();
+    // eslint-disable-next-line
   }, []);
 
   const displayMyRuns = () => {
-    console.log("my runs:", myRuns);
     return myRuns.map((myRun) => (
       <MyRunCard key={myRun.id} myRun={myRun} removeMyRun={removeMyRun} />
     ));
   };
 
   const displayMyCircles = () => {
-    console.log("my circles:", myCircles);
     return myCircles.map((myCircle) => (
       <MyCircleCard
         key={myCircle.id}
