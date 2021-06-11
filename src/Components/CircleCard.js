@@ -13,7 +13,6 @@ export default function CircleCard({ circle, joinCircle }) {
         Runners:
         {displayCircleUsers()}
       </ul>
-      <button onClick={() => joinCircle(circle)}>Join</button>
       <Button
         variant="dark"
         id="circle-card-btn"
