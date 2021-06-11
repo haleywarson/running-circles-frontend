@@ -16,6 +16,8 @@
 
 [Inspiration](#inspiration)
 
+[Status](#status)
+
 [Contact](#contact)
 
 ## General Info
@@ -118,6 +120,10 @@ def current_user
 ## Inspiration
 
 Running is more fun when you train with friends!
+
+## Status
+
+This is a work in progress. Next steps include finalizing the "my run events" and "my circles" features along with the user stats/profile.
 
 ## Contact
 
