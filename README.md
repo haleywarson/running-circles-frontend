@@ -4,6 +4,8 @@
 
 [General Info](#general-info)
 
+[Demo](#demo)
+
 [Technologies](#technologies)
 
 [Setup](#setup)
@@ -20,6 +22,10 @@
 
 Running Circles allows you to plan and join running events with friends in your circles.
 The backend repo for this project can be found [here](https://github.com/haleywarson/running-circles-backend).
+
+## Demo
+
+![Demo](https://media.giphy.com/media/RFelQ1Pt3kRK8lHz0c/giphy.gif)
 
 ## Technologies
 
