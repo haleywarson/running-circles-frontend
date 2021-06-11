@@ -2,17 +2,17 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 
 export default function MyCircleCard({ myCircle, removeMyCircle }) {
-  // const displayMyCircleUsers = () => {
-  //   return myCircle.users.map((user) => <li>{user.username}</li>);
-  // };
+  const displayMyCircleUsers = () => {
+    return myCircle.users.map((user) => <li>{user.username}</li>);
+  };
 
   return (
     <div className="my-circle-card">
       <p>{myCircle.name}</p>
-      {/* <ul>
+      <ul>
         Runners:
         {displayMyCircleUsers()}
-      </ul> */}
+      </ul>
       <Button
         variant="dark"
         id="my-circle-card-btn"

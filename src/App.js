@@ -24,6 +24,8 @@ export default function App() {
   const [circles, setCircles] = useState([]);
   const [myCircles, setMyCircles] = useState([]);
 
+  const [loginToggle, setLoginToggle] = useState(false);
+
   // SIGNUP AND LOGIN/OUT
   const signUp = (user) => {
     fetch(baseUrl + "users", {
@@ -81,6 +83,12 @@ export default function App() {
         .then((result) => {
           if (result.id) {
             setUser(result);
+            // if (result.runs.length !== 0) {
+            //   setUsersRuns();
+            // }
+            // if (result.circles.length !== 0) {
+            //   setUsersCircles();
+            // }
           }
         });
     }
@@ -90,6 +98,16 @@ export default function App() {
     localStorage.removeItem("token");
     setUser({});
   };
+
+  // SET USER DATA
+
+  // const setUsersRuns = (user) => {
+  //   user.runs.map = (run) => setMyRuns([...runs, run]);
+  // };
+
+  // const setUsersCircles = (user) => {
+  //   user.circles.map = (circle) => setMyCircles([...circles, circle]);
+  // };
 
   // FETCH
 
@@ -115,33 +133,15 @@ export default function App() {
       .then((runs) => setRuns(runs));
   };
 
-  const fetchUserData = () => {
-    fetch(baseUrl + "users/" + user.id, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`,
-      },
-    })
-      .then((response) => response.json())
-      .then(
-        (user) => setMyRuns([...myRuns, user.runs]),
-        setMyCircles([...myCircles, user.circles])
-      );
-  };
-
   useEffect(() => {
     validateUser();
     fetchRuns();
     fetchCircles();
-    fetchUserData();
     // eslint-disable-next-line
   }, []);
 
   // EVENT HANDLERS
-
   const addToMyRuns = (runToAdd) => {
-    console.log("adding to my runs...");
-
     fetch(baseUrl + "user_runs", {
       method: "POST",
       headers: {
@@ -164,7 +164,6 @@ export default function App() {
   };
 
   const removeMyCircle = (myCircleToRemove) => {
-    console.log("removing my circle...");
     let filteredCircles = myCircles.filter((myCircle) => {
       return myCircle !== myCircleToRemove;
     });
@@ -172,7 +171,6 @@ export default function App() {
   };
 
   const removeMyRun = (myRunToRemove) => {
-    console.log("removing my run...");
     let filteredRuns = myRuns.filter((myRun) => {
       return myRun !== myRunToRemove;
     });
@@ -180,8 +178,6 @@ export default function App() {
   };
 
   const deleteRun = (runToDelete) => {
-    console.log("deleting run...");
-
     let token = localStorage.getItem("token");
     let filteredRuns = runs.filter((run) => {
       return run !== runToDelete;
@@ -204,8 +200,11 @@ export default function App() {
   };
 
   const joinCircle = (circleToJoin) => {
-    console.log("adding to my circles...");
     setMyCircles([...myCircles, circleToJoin]);
+  };
+
+  const displayLogin = () => {
+    setLoginToggle(true);
   };
 
   return (
@@ -280,8 +279,10 @@ export default function App() {
                   </>
                 ) : (
                   <>
-                    <SignUpForm signUp={signUp} />
-                    <LogInForm login={login} error={error} />
+                    <SignUpForm signUp={signUp} displayLogin={displayLogin} />
+                    {loginToggle ? (
+                      <LogInForm login={login} error={error} />
+                    ) : null}
                   </>
                 )}
               </div>

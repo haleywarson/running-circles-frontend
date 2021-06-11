@@ -17,7 +17,7 @@ export default function RunPage({
   setRuns,
   user,
 }) {
-  //   STATE
+  //   FORM STATE
   const [formState, setFormState] = useState({
     runName: "",
     runLocation: "",
