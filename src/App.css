@@ -5,44 +5,42 @@ black */
 
 /* logo= <a href="https://www.clipartmax.com/middle/m2i8A0K9N4H7G6i8_running-man-silhouette-logo/" target="_blank">Running Man Silhouette Logo @clipartmax.com</a> */
 
-#app-bar,
-#top-nav {
+/* || Header & Nav */
+#nav-bar {
   background-color: white;
+  /* height: 8vh;
+  width: 100%; */
+  box-shadow: 2px 3px 15px rgba(226, 180, 180, 0.2);
+}
+
+#logo {
   color: #79262d;
-}
-
-#nav-bar-title,
-#toolbar {
-  font-family: "Teko", sans-serif;
   font-size: 2rem;
+  font-family: "Teko", sans-serif;
 }
 
-.main {
-  background-image: url("https://images.unsplash.com/photo-1502904550040-7534597429ae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1249&q=80");
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
-  background-position: center;
+#logo:hover {
+  opacity: 0.7;
+}
+
+#nav-link {
+  color: #79262d;
+  font-size: 1rem;
   font-family: "Open Sans", sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-h1,
-h2 {
-  padding-left: 0.5em;
-  padding-top: 0.5em;
-  font-family: "Teko", sans-serif;
-  font-size: 2rem;
-  color: #79262d;
+#nav-link:hover {
+  opacity: 0.9;
 }
 
-.add-run-form {
+/* || Login/Signup */
+
+.login-form,
+.signup-form {
   padding: 0.5em;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin: 0.5em;
   width: 90%;
@@ -50,6 +48,119 @@ h2 {
   font-family: "Open Sans", sans-serif;
   background-color: #79262d;
   color: white;
+}
+
+.login-form button,
+.signup-form button {
+  color: white;
+  background: black;
+  border: none;
+}
+
+.login-form h2,
+.signup-form h2 {
+  color: white;
+  padding: 0;
+}
+
+#sign-up-text {
+  color: white;
+  font-size: 1.5rem;
+  padding: 0.5em;
+}
+
+.main-container {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 87vh;
+}
+
+.main-container p {
+  font-family: "Teko", sans-serif;
+  color: white;
+  font-size: 4rem;
+}
+
+/* Welcome */
+.welcome-page {
+  height: 87vh;
+}
+
+.welcome-page h2 {
+  font-size: 2.5rem;
+  padding: 0.3em;
+}
+
+.welcome-page-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.welcome-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  color: #79262d;
+  font-family: "Open Sans", sans-serif;
+  border-radius: 7%;
+  margin: 0.5em;
+  padding: 0.5rem;
+  box-shadow: 2px 2px 3px rgba(206, 205, 205, 0.582);
+}
+
+.welcome-div a {
+  font-size: 3.5rem;
+  padding: 0.5em;
+  color: #79262d;
+}
+
+/* || Run/Main */
+
+.run-page,
+.circle-page,
+.dashboard {
+  overflow: auto;
+  height: 87vh;
+}
+
+h1,
+h2 {
+  font-family: "Teko", sans-serif;
+  font-size: 2rem;
+  color: #79262d;
+}
+
+.run-page h2,
+.circle-page h2,
+.stats h2 {
+  font-family: "Teko", sans-serif;
+  font-size: 2rem;
+  color: #79262d;
+  padding: 0.5em;
+}
+
+.add-run-form,
+.circles-container,
+.my-runs-container,
+.my-circles-container,
+.runs-container {
+  padding: 0.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: 90%;
+  border-radius: 13px;
+  font-family: "Open Sans", sans-serif;
+  color: white;
+  overflow: auto;
 }
 
 .form-field {
@@ -62,36 +173,74 @@ h2 {
   font-family: "Teko", sans-serif;
   color: white;
   background: black;
-  padding: 8px;
-  border-radius: 13px;
-  text-decoration: none;
-  vertical-align: middle;
-  margin: 0.5em;
 }
 
-.run-card {
+.run-card,
+.circle-card,
+.my-circle-card,
+.my-run-card {
   padding: 0.5em;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   margin: 0.5em;
   border-radius: 13px;
   font-family: "Open Sans", sans-serif;
-  background-color: #79262d;
-  color: white;
+  background-color: white;
+  font-size: 0.8rem;
+  border-style: solid;
+  width: 100%;
+  box-shadow: 2px 2px 3px rgba(206, 205, 205, 0.582);
 }
 
-.run-card button {
+.run-card p,
+.circle-card p,
+.my-circle-card p,
+.my-run-card p {
+  padding: 1em;
+  color: #79262d;
+}
+
+.run-card,
+.circle-card,
+.my-circle-card,
+.my-run-card h3 {
+  color: #79262d;
+}
+
+.stats p {
+  color: #79262d;
+  font-family: Teko, sans-serif;
+  margin-left: 1em;
+  padding: 0.3em;
+}
+
+#circle-card-btn,
+#my-circle-card-btn {
   font-size: 1rem;
   font-family: "Teko", sans-serif;
   color: white;
   background: black;
-  padding: 5px;
-  border-radius: 13px;
-  text-decoration: none;
-  vertical-align: middle;
-  margin: 0.5em;
+  margin: 1em;
+}
+
+#run-card-btn,
+#my-run-card-btn {
+  margin: 0.2em;
+  padding: 0.2em;
+  font-size: 1rem;
+  font-family: "Teko", sans-serif;
+  color: white;
+  background: black;
+}
+
+.combined-buttons {
+  padding: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin: none;
 }
 
 /* || Footer */
@@ -105,11 +254,10 @@ footer {
   display: flex;
   align-items: center;
   padding-left: 1em;
-  padding-right: 1em;
 }
 
 footer p {
-  color: #cc6f64;
+  color: #79262d;
   font-size: 0.9rem;
   font-family: "Teko", sans-serif;
 }

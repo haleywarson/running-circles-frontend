@@ -1,31 +1,29 @@
 import React from "react";
 
-export default function AddRunForm(props) {
+import Button from "react-bootstrap/Button";
+
+export default function AddRunForm({ formState, handleSubmit, handleChange }) {
   return (
-    <form className="add-run-form" onSubmit={props.handleSubmit}>
-      <label htmlFor="runName" hidden="true">
-        Name your run
-      </label>
+    <form className="add-run-form" onSubmit={handleSubmit}>
+      <label htmlFor="runName">Name your run</label>
       <input
         className="form-field"
         type="text"
         name="runName"
         placeholder="Name your run"
         id="runName"
-        value={props.formState.runName}
-        onChange={props.handleChange}
+        value={formState.runName}
+        onChange={handleChange}
       />
-      <label htmlFor="runLocation" hidden="true">
-        Location
-      </label>
+      <label htmlFor="runLocation">Location</label>
       <input
         className="form-field"
         type="text"
         placeholder="Location"
         name="runLocation"
         id="runLocation"
-        value={props.formState.runLocation}
-        onChange={props.handleChange}
+        value={formState.runLocation}
+        onChange={handleChange}
       />
       <label htmlFor="runDate">Date</label>
       <input
@@ -33,8 +31,8 @@ export default function AddRunForm(props) {
         type="date"
         name="runDate"
         id="runDate"
-        value={props.formState.runDate}
-        onChange={props.handleChange}
+        value={formState.runDate}
+        onChange={handleChange}
       />
       <label htmlFor="runTime">Time</label>
       <input
@@ -42,10 +40,12 @@ export default function AddRunForm(props) {
         type="time"
         name="runTime"
         id="runTime"
-        value={props.formState.runTime}
-        onChange={props.handleChange}
+        value={formState.runTime}
+        onChange={handleChange}
       />
-      <input id="submit-run-btn" type="submit" value="Add run" />
+      <Button variant="dark" type="submit" id="submit-run-btn">
+        Add run
+      </Button>
     </form>
   );
 }
